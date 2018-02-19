@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block main %}
+    <<form action="{{ url_for('contact') }}" method="post" id="myform">
+        {% include 'flash_messages.html' %}
+        <div class="form-group">
+            <label for="Name">Name: <strong>Required</strong></label>
+            <input type="text" class="form-control" name="name" id="name" />
+        </div>
+        <div class="form-group">
+            <label for="email">E-mail: <strong>Required</strong> </label>
+            <input type="email" class="form-control" name="email" id="email" placeholder="lolomgwow@example.com" />
+        </div>
+        <div class="form-group">
+            <label for="subject">Subject: <strong>Required</strong> </label>
+            <input type="text" class="form-control" name="subject" id="subject" />
+        </div>
+        <div class="form-group">
+            <label for="Message">Message: <strong>Required</strong> </label>
+            <textarea rows="4" cols="50" name="msg" form="myform">
+Enter text here...</textarea>
+            
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Send</button>
+        {{ form.csrf_token }}
+    </form>
+{% endblock %}
